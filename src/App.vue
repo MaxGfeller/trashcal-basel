@@ -184,8 +184,6 @@ const downloadEvents = async () => {
     return data.records
   }))
 
-  console.log('data', allRecords.flat())
-
   const { value } = ics.createEvents(allRecords.flat().map((record) => ({
     start: [...record.fields.termin.split('-').map(number => parseInt(number)), 6, 0],
     duration: { minutes: 10 },
