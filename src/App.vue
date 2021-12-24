@@ -11,11 +11,6 @@
           Wähle ein Jahr
         </legend>
         <div class="grid grid-cols-4 gap-3 sm:grid-cols-8">
-          <!--
-            In Stock: "cursor-pointer", Out of Stock: "opacity-25 cursor-not-allowed"
-            Active: "ring-2 ring-offset-2 ring-indigo-500"
-            Checked: "bg-indigo-600 border-transparent text-white hover:bg-indigo-700", Not Checked: "bg-white border-gray-200 text-gray-900 hover:bg-gray-50"
-          -->
           <label
             v-for="year in years"
             :key="year"
@@ -38,11 +33,6 @@
             </p>
           </label>
 
-          <!--
-            In Stock: "cursor-pointer", Out of Stock: "opacity-25 cursor-not-allowed"
-            Active: "ring-2 ring-offset-2 ring-indigo-500"
-            Checked: "bg-indigo-600 border-transparent text-white hover:bg-indigo-700", Not Checked: "bg-white border-gray-200 text-gray-900 hover:bg-gray-50"
-          -->
           <label class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 opacity-25 cursor-not-allowed">
             <input type="radio" name="memory-option" value="128 GB" disabled class="sr-only" aria-labelledby="memory-option-5-label">
             <p id="memory-option-5-label">
@@ -63,11 +53,6 @@
           Wähle eine Zone
         </legend>
         <div class="grid grid-cols-4 gap-3 sm:grid-cols-8">
-          <!--
-            In Stock: "cursor-pointer", Out of Stock: "opacity-25 cursor-not-allowed"
-            Active: "ring-2 ring-offset-2 ring-indigo-500"
-            Checked: "bg-indigo-600 border-transparent text-white hover:bg-indigo-700", Not Checked: "bg-white border-gray-200 text-gray-900 hover:bg-gray-50"
-          -->
           <label
             v-for="zone in zones"
             :key="zone"
@@ -111,9 +96,7 @@
       </div>
     </fieldset>
 
-    <!-- This example requires Tailwind CSS v2.0+ -->
     <div class="mt-8 flex items-center">
-      <!-- Enabled: "bg-indigo-600", Not Enabled: "bg-gray-200" -->
       <button
         @click="alarms = !alarms"
         type="button"
@@ -126,7 +109,6 @@
         :aria-checked="alarms"
         aria-labelledby="annual-billing-label"
       >
-        <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
         <span
           aria-hidden="true"
           class="pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
