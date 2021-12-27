@@ -98,22 +98,22 @@
 
     <div class="mt-8 flex items-center">
       <button
-        @click="alarms = !alarms"
+        @click="useAlarms = !useAlarms"
         type="button"
         class="relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         :class="{
-          'bg-indigo-600': alarms,
-          'bg-gray-200': !alarms,
+          'bg-indigo-600': useAlarms,
+          'bg-gray-200': !useAlarms,
         }"
         role="switch"
-        :aria-checked="alarms"
+        :aria-checked="useAlarms"
         aria-labelledby="annual-billing-label"
       >
         <span
           aria-hidden="true"
           class="pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
           :class="{
-            'translate-x-5': alarms
+            'translate-x-5': useAlarms
           }"
         ></span>
       </button>
@@ -136,28 +136,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import useData from './composables/useData'
 import useCal from './composables/useCal'
 
+const { zones, selectedZone, years, selectedYear, useAlarms, types } = useData()
 const { downloadEvents } = useCal()
-
-const zones = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
-const selectedZone = ref('A')
-
-const years = ['2020', '2021']
-const selectedYear = ref('2021')
-
-const alarms = ref(true)
-
-const types = ref({
-  'Kehrichtabfuhr': true,
-  'Papierabfuhr': true,
-  'Grobsperrgut': false,
-  'Grünabfuhr': false,
-  'Häckseldienst': false,
-  'Metallabfuhr': false,
-  'Unbrennbares': false
-})
 
 const exportEvents = async () => {
   const filteredTypes = Object.keys(types.value).filter(type => types.value[type])
@@ -172,7 +155,7 @@ const exportEvents = async () => {
     start: [...record.fields.termin.split('-').map(number => parseInt(number)), 6, 0],
     duration: { minutes: 10 },
     title: record.fields.art,
-    alarms: alarms.value ? [{
+    alarms: useAlarms.value ? [{
       action: 'audio',
       description: 'Abfall rausstellen',
       trigger: { hours: 12, before: true },
