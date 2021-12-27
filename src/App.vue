@@ -131,8 +131,8 @@
 
     <div class="mt-20 mb-4 flex justify-center space-x-4">
       <span class="text-sm text-gray-600">Made with ❤️ by <a class="font-semibold" href="https://www.maxgfeller.com" target="_blank">Max Gfeller</a></span>
-      <span class="text-sm text-gray-400">|</span>
-      <span class="text-sm text-gray-600">Data provided by <a class="font-semibold" href="https://data.bs.ch/explore/dataset/100096" target="_blank">OPEN BS</a></span>
+      <span class="text-sm text-gray-300">|</span>
+      <span class="text-sm text-gray-600">Data provided by <a class="font-semibold" href="https://data.bs.ch/explore/dataset/100096" target="_blank">Open Data BS</a></span>
     </div>
   </div>
 </template>
