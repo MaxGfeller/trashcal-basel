@@ -45,7 +45,7 @@
     <div class="mt-8">
       <div class="flex items-center justify-between">
         <h2 class="text-sm font-medium text-gray-900">Zone</h2>
-        <a class="text-sm text-indigo-600" href="https://www.tiefbauamt.bs.ch/entsorgung-sauberkeit/abfallentsorgung/abfuhrplan-abfallkalender.html" target="_blank">Zonenplan</a>
+        <a class="text-sm text-indigo-600" href="https://map.geo.bs.ch/?lang=de&baselayer_ref=Grundkarte%20farbig&map_x=2611169.25&map_y=1267226.5&map_zoom=5&tree_group_layers_Abfuhrzonen_Basel=AF_AbfuhrzoneGemeindeBasel&tree_groups=Abfuhrzonen_Basel" target="_blank">Zonenplan</a>
       </div>
 
       <fieldset class="mt-2">
