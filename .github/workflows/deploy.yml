@@ -1,0 +1,38 @@
+name: Build and deploy web application
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: dist/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@master
+        with:
+          name: dist
+          path: dist/
+      - uses: SamKirkland/FTP-Deploy-Action@4.2.0
+        with:
+          server: maxgfeller.com
+          username: trashcal@maxgfeller.com
+          passwort: ${{ secrets.FTP_PASSWORD }}
