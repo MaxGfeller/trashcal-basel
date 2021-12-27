@@ -54,7 +54,7 @@
         </legend>
         <div class="grid grid-cols-4 gap-3 sm:grid-cols-8">
           <label
-            v-for="zone in zones"
+            v-for="(zone, index) in zones"
             :key="zone"
             class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 cursor-pointer focus:outline-none"
             :class="{
@@ -68,9 +68,9 @@
               name="memory-option"
               :value="zone"
               class="sr-only"
-              aria-labelledby="memory-option-0-label"
+              :aria-labelledby="`memory-option-${index}-label`"
             >
-            <p id="memory-option-0-label">
+            <p :id="`memory-option-${index}-label`">
               {{ zone }}
             </p>
           </label>
