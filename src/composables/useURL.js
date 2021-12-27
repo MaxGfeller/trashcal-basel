@@ -11,8 +11,6 @@ export default function () {
     return url.href
   }
 
-  // https://data.bs.ch/api/records/1.0/search/?dataset=100096&sort=termin&facet=termin&refine.zone=${selectedZone.value}&refine.termin=${selectedYear.value}&refine.art=${encodeURIComponent(type)}&rows=500
-
   return {
     buildURL
   }
