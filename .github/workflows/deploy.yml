@@ -36,4 +36,3 @@ jobs:
           username: trashcal@maxgfeller.com
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          server-dir: ~/www/trashcal/
