@@ -129,24 +129,33 @@
       Zu Kalender hinzufügen
     </button>
 
-    <div class="mt-20 mb-4 flex justify-center">
+    <div class="mt-20 mb-4 flex justify-center space-x-4">
       <span class="text-sm text-gray-600">Made with ❤️ by <a class="font-semibold" href="https://www.maxgfeller.com" target="_blank">Max Gfeller</a></span>
+      <span class="text-sm text-gray-400">|</span>
+      <span class="text-sm text-gray-600">Data provided by <a class="font-semibold" href="https://data.bs.ch/explore/dataset/100096" target="_blank">OPEN BS</a></span>
     </div>
   </div>
 </template>
 
 <script setup>
 import useData from './composables/useData'
+import useURL from './composables/useURL'
 import useCal from './composables/useCal'
 
 const { zones, selectedZone, years, selectedYear, useAlarms, types } = useData()
+const { buildURL } = useURL()
 const { downloadEvents } = useCal()
 
 const exportEvents = async () => {
   const filteredTypes = Object.keys(types.value).filter(type => types.value[type])
 
   const allRecords = await Promise.all(filteredTypes.map(async (type) => {
-    const result = await fetch(`https://data.bs.ch/api/records/1.0/search/?dataset=100096&sort=termin&facet=termin&refine.zone=${selectedZone.value}&refine.termin=${selectedYear.value}&refine.art=${encodeURIComponent(type)}&rows=500`)
+    const url = buildURL({
+      zone: selectedZone.value,
+      date: selectedYear.value,
+      type
+    })
+    const result = await fetch(url)
     const data = await result.json()
     return data.records
   }))
