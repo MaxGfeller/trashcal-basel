@@ -124,7 +124,7 @@
     </div>
 
 
-    <button @click="downloadEvents()" type="button" class="mt-8 inline-flex items-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+    <button @click="exportEvents()" type="button" class="mt-8 inline-flex items-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
       <svg class="-ml-1 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
       Zu Kalender hinzufügen
     </button>
@@ -137,7 +137,9 @@
 
 <script setup>
 import { ref } from 'vue'
-import * as ics from 'ics'
+import useCal from './composables/useCal'
+
+const { downloadEvents } = useCal()
 
 const zones = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 const selectedZone = ref('A')
@@ -157,7 +159,7 @@ const types = ref({
   'Unbrennbares': false
 })
 
-const downloadEvents = async () => {
+const exportEvents = async () => {
   const filteredTypes = Object.keys(types.value).filter(type => types.value[type])
 
   const allRecords = await Promise.all(filteredTypes.map(async (type) => {
@@ -166,7 +168,7 @@ const downloadEvents = async () => {
     return data.records
   }))
 
-  const { value } = ics.createEvents(allRecords.flat().map((record) => ({
+  downloadEvents(allRecords.flat().map((record) => ({
     start: [...record.fields.termin.split('-').map(number => parseInt(number)), 6, 0],
     duration: { minutes: 10 },
     title: record.fields.art,
@@ -178,16 +180,5 @@ const downloadEvents = async () => {
       attach: 'Glass'
     }] : []
   })))
-
-  const element = document.createElement('a')
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(value))
-  element.setAttribute('download', 'Abfuhrtermine.ics')
-
-  element.style.display = 'none'
-  document.body.appendChild(element)
-
-  element.click()
-
-  document.body.removeChild(element)
 }
 </script>
