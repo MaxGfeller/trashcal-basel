@@ -17,7 +17,7 @@
         </legend>
         <div class="grid grid-cols-4 gap-3 sm:grid-cols-8">
           <label
-            v-for="year in years"
+            v-for="(year, index) in years"
             :key="year"
             class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 cursor-pointer focus:outline-none"
             :class="{
@@ -31,9 +31,9 @@
               name="memory-option"
               :value="year"
               class="sr-only"
-              aria-labelledby="memory-option-0-label"
+              :aria-labelledby="`memory-option-${index}-label`"
             >
-            <p id="memory-option-0-label">
+            <p :id="`memory-option-${index}-label`">
               {{ year }}
             </p>
           </label>
@@ -112,7 +112,7 @@
         }"
         role="switch"
         :aria-checked="useAlarms"
-        aria-labelledby="annual-billing-label"
+        aria-labelledby="alarms-label"
       >
         <span
           aria-hidden="true"
@@ -122,7 +122,7 @@
           }"
         ></span>
       </button>
-      <span class="ml-3" id="annual-billing-label">
+      <span class="ml-3" id="alarms-label">
         <span class="text-sm font-medium text-gray-900">Erinnerung </span>
         <span class="text-sm text-gray-500">(Am Abend zuvor)</span>
       </span>
