@@ -28,19 +28,19 @@
             <input
               type="radio"
               v-model="selectedYear"
-              name="memory-option"
+              name="year-option"
               :value="year"
               class="sr-only"
-              :aria-labelledby="`memory-option-${index}-label`"
+              :aria-labelledby="`year-option-${index}-label`"
             >
-            <p :id="`memory-option-${index}-label`">
+            <p :id="`year-option-${index}-label`">
               {{ year }}
             </p>
           </label>
 
           <label class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 opacity-25 cursor-not-allowed">
-            <input type="radio" name="memory-option" value="128 GB" disabled class="sr-only" aria-labelledby="memory-option-5-label">
-            <p id="memory-option-5-label">
+            <input type="radio" name="year-option" value="2022" disabled class="sr-only" aria-labelledby="year-option-5-label">
+            <p id="year-option-5-label">
               2022
             </p>
           </label>
@@ -70,12 +70,12 @@
             <input
               type="radio"
               v-model="selectedZone"
-              name="memory-option"
+              name="zone-option"
               :value="zone"
               class="sr-only"
-              :aria-labelledby="`memory-option-${index}-label`"
+              :aria-labelledby="`zone-option-${index}-label`"
             >
-            <p :id="`memory-option-${index}-label`">
+            <p :id="`zone-option-${index}-label`">
               {{ zone }}
             </p>
           </label>
@@ -92,10 +92,10 @@
           class="relative flex items-start py-4"
         >
           <div class="min-w-0 flex-1 text-sm">
-            <label :for="`art-${type}`" class="font-medium text-gray-700 select-none">{{ type }}</label>
+            <label :for="`type-${type}`" class="font-medium text-gray-700 select-none">{{ type }}</label>
           </div>
           <div class="ml-3 flex items-center h-5">
-            <input :id="`art-${type}`" v-model="types[type]" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+            <input :id="`type-${type}`" v-model="types[type]" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
           </div>
         </div>
       </div>
