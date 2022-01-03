@@ -38,12 +38,12 @@
             </p>
           </label>
 
-          <label class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 opacity-25 cursor-not-allowed">
+          <!-- <label class="border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1 opacity-25 cursor-not-allowed">
             <input type="radio" name="year-option" value="2022" disabled class="sr-only" aria-labelledby="year-option-5-label">
             <p id="year-option-5-label">
               2022
             </p>
-          </label>
+          </label> -->
         </div>
       </fieldset>
     </div>

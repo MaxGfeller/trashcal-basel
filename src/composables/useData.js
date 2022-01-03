@@ -4,8 +4,8 @@ export default function () {
   const zones = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
   const selectedZone = ref('A')
 
-  const years = ['2020', '2021']
-  const selectedYear = ref('2021')
+  const years = ['2022']
+  const selectedYear = ref('2022')
 
   const useAlarms = ref(true)
 
