@@ -5,7 +5,7 @@ export default function () {
     const { value } = ics.createEvents(events)
 
     const element = document.createElement('a')
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(value))
+    element.setAttribute('href', 'data:text/calendar;charset=utf-8,' + encodeURIComponent(value))
     element.setAttribute('download', 'Abfuhrtermine.ics')
 
     element.style.display = 'none'
